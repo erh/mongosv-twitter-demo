@@ -3,11 +3,10 @@ import pymongo
 import json
 
 import jinja2
-import flask
+from flask import Flask, render_template
 
 
-env = jinja2.Environment(loader=jinja2.FileSystemLoader("templates"))
-app = flask.Flask(__name__)
+app = Flask(__name__)
 
 db = pymongo.Connection().test
 live = db.live
@@ -56,21 +55,17 @@ function(k,arr) {
 # ----------------------------------------------------------------------------------------
         
 
-    pageParams = { "mentions" : mentions , "posters" : posters }
+    last = live.find({'user.screen_name': {'$exists': True}})
+    live.sort([('created_at', pymongo.DESCENDING)])
+    live.limit(10)
 
-    pageParams["last"] = live.find( { "user.screen_name" : { "$exists" : True } } , 
-                                    sort=[("created_at",pymongo.DESCENDING)] ).limit(10)
-
-    return env.get_template( "index.html" , pageParams ).render( pageParams )
+    return render_template("index.html",
+        mentions=mentions,
+        posters=posters,
+        last=last)
 
 
 if __name__ == "__main__":
-    debug = True
-    for x in sys.argv:
-        if x == "production":
-            debug=False
+    debug = 'production' not in sys.argv
 
-    if debug:
-        app.run(debug=True)
-    else:
-        app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', debug=debug)
