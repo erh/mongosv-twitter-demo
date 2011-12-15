@@ -1,0 +1,49 @@
+
+body { 	background-image: url(background_2.png);
+		background-repeat: no-repeat;
+		background-position: bottom;
+}
+
+#main {
+	margin-top: 40px;
+	width: 300px;
+}
+
+
+table { 
+  color: #390;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: right;
+ }
+
+th { 
+  color: #630;
+  text-align: left;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  padding-right: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  border-bottom: dotted 1px #999999;
+  width: 250px;
+
+ }
+
+h3 { 
+  margin-top: 40px;
+  margin-bottom: 5px;
+  color: #9B8362;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-size: 140%; 
+  text-align: left;
+ }
+
+
+#left {
+  color: #630;
+}
+
+#tweet {
+	  border-bottom: dotted 1px #999999;
+	  padding-top: 9px;
+      padding-bottom: 9px;
+}

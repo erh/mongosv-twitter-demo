@@ -1,0 +1,81 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/css.css">
+    <title>MongoSV Tweets</title>
+    <meta http-equiv="refresh" content="60">
+
+  </head>
+  <body>
+
+    <table width="99%" border=0>
+      <tr>
+        <td width=14% >&nbsp;</td>
+                
+        <td align="left">
+          <img src="../static/mongosv_logo.png" />
+        </td>
+        
+      </tr>
+      
+      <tr>
+        
+        <td width=10% >&nbsp;
+        </td>
+
+        <td>
+          
+          <div id="main">
+            
+            
+            <h3>Top Mentions</h3>
+            <table>
+              {% for x in mentions %}
+              <tr>
+                <th>{{ x._id }}</th>
+                <td>{{ x.value }}</td>
+              </tr>
+              {% endfor %}
+            </table>
+            
+            <h3>Top Posters</h3>
+            <table>
+              {% for x in posters %}
+              <tr>
+                <th>{{ x._id }}</th>
+                <td>{{ x.total }}</td>
+              </tr>
+              {% endfor %}
+            </table>
+            
+          </div>
+
+        </td>
+        
+        <td width="40%"  valign="top" align="left" >
+          
+          <h3>Twitter Feed</h3>
+          
+          <div id="left">
+            {% for x in last %}
+            
+            <div id="tweet">
+              
+              <b>{{ x["user"]["screen_name"] }}</b>
+              {{ x["text"] }}
+              
+            </div>
+            
+            {% endfor %}
+            
+          </div>
+          
+        </td>
+        
+        <td width=15% >&nbsp;
+        </td>
+        
+      </tr>
+    </table>
+    
+  </body>
+</html>
