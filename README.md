@@ -19,7 +19,7 @@ start web app
 run curl
 -----
 * streaming api docs: https://dev.twitter.com/docs/streaming-api
-* sample: curl https://stream.twitter.com/1/statuses/sample.json -u<user>:<pass> | mongoimport -d test -c live
+* sample: curl https://stream.twitter.com/1/statuses/sample.json -u<USERNAME>:<PASSWORD> | mongoimport -d test -c live
 
 all set
 -----
